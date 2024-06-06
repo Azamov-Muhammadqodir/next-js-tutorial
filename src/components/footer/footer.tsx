@@ -7,7 +7,12 @@ import YouTube from '@mui/icons-material/YouTube';
 
 const Footer = ()=>{
     return( 
-        <Box padding={'20px'} sx={{display:'flex', justifyContent:'space-between', alignItems:"center", backgroundColor:'primary.main', color:'white'}}>
+        <Box padding={'20px'} sx={{
+            display:'flex', 
+            justifyContent:'space-between', 
+            alignItems:"center", 
+            backgroundColor:"#141414", 
+            color:'white'}}>
             <Typography>
                 @{format(new Date(), "yyyy")} 
                 <span style={{marginLeft:'20px'}}>
@@ -17,7 +22,6 @@ const Footer = ()=>{
             <Box
                     sx={{display:'flex', gap:'15px'}}
                     >
-                    
                     <TelegramIcon sx={{cursor:'pointer'}}/>
                     <InstagramIcon sx={{cursor:'pointer'}}/>
                     <YouTube sx={{cursor:'pointer'}}/>

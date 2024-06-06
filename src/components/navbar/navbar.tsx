@@ -58,8 +58,8 @@ const Navbar = ({window}:Props) =>{
     </Box>
   );
   
-    return <Box height={'10vh'} sx={{ display: 'flex' }}>
-        <AppBar component="nav" >
+    return <Box height={"10vh"} sx={{ display: 'flex' }}>
+        <AppBar sx={{height:"10vh", backgroundColor:"#141414"}} component="nav" >
             <Toolbar>
             <IconButton
                 color="inherit"
@@ -75,11 +75,11 @@ const Navbar = ({window}:Props) =>{
                 variant="h6"
                 component="div"
               >
+              </Typography>
                 <AccountCircleTwoToneIcon sx={{width:'50px', height:'50px'}}/>  
                 <span style={{marginLeft:'25px'}}>
                   decimetr
                 </span>
-              </Typography>
             </Box>
                 
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
