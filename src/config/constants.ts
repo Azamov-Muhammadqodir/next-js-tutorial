@@ -20,7 +20,7 @@ export const data =[
         excerpt: 'Learn the fundamentals of JavaScript, the most popular programming language.',
         author: {
             name: 'John Doe',
-            image: 'https://suret.pics/uploads/posts/2023-09/1695046553_1.jpg',
+            image: 'https://i0.wp.com/rollercoasteryears.com/wp-content/uploads/Thrive-During-Finals-.jpg?resize=1000%2C667&ssl=1',
         }
     },
     {
@@ -29,16 +29,16 @@ export const data =[
         excerpt: 'Explore advanced CSS techniques to create stunning web pages.',
         author: {
             name: 'Jane Smith',
-            image: 'https://suret.pics/uploads/posts/2023-09/1695046553_1.jpg',
+            image: 'https://concept3d.com/wp-content/uploads/2023/08/Student-with-more-access-to-academic-resources-due-to-efforts-to-boost-student-retention-and-persistence.jpg',
         }
     },
     {
-        image: 'https://suret.pics/uploads/posts/2023-09/1695194727_2-3.jpg',
+        image: 'https://neeadvantage.com/wp-content/uploads/2021/01/pexels-katerina-holmes-5905557-scaled.jpg',
         title: 'Understanding React',
         excerpt: 'A deep dive into React, a powerful JavaScript library for building user interfaces.',
         author: {
             name: 'Emily Johnson',
-            image: 'https://suret.pics/uploads/posts/2023-09/1695046553_1.jpg',
+            image: 'https://i0.wp.com/rollercoasteryears.com/wp-content/uploads/2018/08/Self-Pic.jpg?resize=150%2C150&ssl=1',
         }
     },
     {

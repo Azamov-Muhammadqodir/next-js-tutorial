@@ -3,8 +3,9 @@ import { Avatar, Box, Button, Divider, Typography } from "@mui/material"
 import { Fragment } from "react"
 import Image from 'next/image';
 import { format } from "date-fns";
+import { SideBarProps } from "./sidebar.props";
 
-const Sidebar = () => {
+const Sidebar = ({latestBlogs, categories}:SideBarProps) => {
   return (
     <>
     <Box width={{xs:'100%', md:'30%'}}>
@@ -12,17 +13,17 @@ const Sidebar = () => {
             <Box sx={{padding:'20px', border:"1px solid gray", borderRadius:'8px'}}>
                 <Typography variant="h5">Latest blog</Typography>
                 <Box sx={{display:'flex', flexDirection:'column', marginTop:'20px'}}>
-                    {data.map(item =>(
-                        <Box key={item.title} marginTop={'20px'}>
+                    {latestBlogs.map(item =>(
+                        <Box key={item.id} marginTop={'20px'}>
                             <Box sx={{display:'flex', alignItems: 'center', gap:'10px'}}>
-                                <Image src={item.image} alt={item.title} width={100} height={100} style={{objectFit:"cover", borderRadius:'8px'}}/>
+                                <Image src={item.image.url} alt={item.tittle} width={100} height={100} style={{objectFit:"cover", borderRadius:'8px'}}/>
                                 <Box sx={{display:'flex', flexDirection:'column', gap:'10px'}}>
-                                    <Typography variant="body1">{item.title}</Typography>
+                                    <Typography variant="body1">{item.tittle}</Typography>
                                     <Box sx={{display:'flex', gap:'10px'}}>
-                                        <Avatar alt={item.author.name} src={item.author.image} />
+                                        <Avatar alt={item.author.name} src={item.author.avatar.url}/>
                                         <Box>
                                             <Typography variant="body2">{item.author.name}</Typography>
-                                            <Typography sx={{opacity:'.4'}}>{format(new Date(), 'dd MMM,  yyyy')}</Typography>
+                                            <Typography sx={{opacity:'.4'}}>{format(new Date(item.createdAt), 'dd MMM,  yyyy')} </Typography>
                                         </Box>
                                     </Box>
                                 </Box>
@@ -35,9 +36,9 @@ const Sidebar = () => {
             <Box sx={{ marginTop:'20px',  padding:'20px', border:"1px solid gray", borderRadius:'8px'}}>
                 <Typography variant="h5">Category</Typography>
                 <Box sx={{display:'flex', flexDirection:'column', marginTop:'20px'}}>
-                    {navItems.map(nav=>
+                    {categories.map(nav=>
                         (
-                            <Fragment key={nav.route} >
+                            <Fragment key={nav.slug} >
                                 <Button fullWidth   sx={{justifyContent:"flex-start", height:'50px'}}>{nav.label}</Button>
                                 <Divider/>
                             </Fragment>
