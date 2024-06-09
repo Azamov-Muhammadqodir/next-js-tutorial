@@ -1,7 +1,3 @@
 {
-    "git.ignoreLimitWarning": true,
-    "editor.formatOnSave": false,
-    "[javascript]": {
-    "editor.formatOnSave": true,
-    }
+    "git.ignoreLimitWarning": true
 }

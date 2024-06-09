@@ -4,8 +4,10 @@ import { Fragment } from "react"
 import Image from 'next/image';
 import { format } from "date-fns";
 import { SideBarProps } from "./sidebar.props";
+import { useRouter } from "next/router";
 
 const Sidebar = ({latestBlogs, categories}:SideBarProps) => {
+const router = useRouter();
   return (
     <>
     <Box width={{xs:'100%', md:'30%'}}>
@@ -14,7 +16,7 @@ const Sidebar = ({latestBlogs, categories}:SideBarProps) => {
                 <Typography variant="h5">Latest blog</Typography>
                 <Box sx={{display:'flex', flexDirection:'column', marginTop:'20px'}}>
                     {latestBlogs.map(item =>(
-                        <Box key={item.id} marginTop={'20px'}>
+                        <Box sx={{cursor:'pointer'}} key={item.id} marginTop={'20px'} onClick={()=>router.push(`/blog/${item.slug}`)}>
                             <Box sx={{display:'flex', alignItems: 'center', gap:'10px'}}>
                                 <Image src={item.image.url} alt={item.tittle} width={100} height={100} style={{objectFit:"cover", borderRadius:'8px'}}/>
                                 <Box sx={{display:'flex', flexDirection:'column', gap:'10px'}}>
@@ -39,7 +41,7 @@ const Sidebar = ({latestBlogs, categories}:SideBarProps) => {
                     {categories.map(nav=>
                         (
                             <Fragment key={nav.slug} >
-                                <Button fullWidth   sx={{justifyContent:"flex-start", height:'50px'}}>{nav.label}</Button>
+                                <Button onClick={()=>router.push(`/category/${nav.slug}`)} fullWidth   sx={{justifyContent:"flex-start", height:'50px'}}>{nav.label}</Button>
                                 <Divider/>
                             </Fragment>
                         )

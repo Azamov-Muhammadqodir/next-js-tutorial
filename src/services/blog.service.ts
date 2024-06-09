@@ -69,5 +69,68 @@ export const BlogsService = {
         }`;
         const result = await request<{categories:categoriesType[]}>(graphqlAPI, query);
         return result.categories;
-    }
+    },
+    async GetDetailedBlogs(slug: string){
+        const query = gql`
+        query GetDetailedBlog($slug: String!) {
+        blog(where: {slug: $slug}) {
+            excerpt
+            id
+            slug
+            tittle
+            createdAt
+            image {
+            url
+            }
+            description {
+                html
+                text
+            }
+            author {
+            name
+            avatar {
+                url
+            }
+            }
+            category {
+            label
+            slug
+            }
+        }
+        }`;
+        const result = await request<{blog:BlogsType}>(graphqlAPI, query, {slug});
+        return result.blog;
+    },
+    async GetCategoriesBlog(slug: string){
+        const query = gql`
+        query getCategoriesBlog($slug: String!) {
+            blogs(where: {category: {slug: $slug}}) {
+            excerpt
+            id
+            slug
+            tittle
+            createdAt
+            image { 
+            url
+            }
+            description {
+                html
+                text
+            }
+            author {
+            name
+            avatar {
+                url
+            }
+            }
+            category {
+            label
+            slug
+            }
+            }
+        }`;
+        const result = await request<{blogs:BlogsType[]}>(graphqlAPI, query, {slug});
+        return result.blogs;
+    },
+
 }

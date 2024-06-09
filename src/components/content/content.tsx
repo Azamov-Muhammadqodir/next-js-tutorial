@@ -1,16 +1,26 @@
-import { data } from "@/config/constants"
 import { Avatar, Box, Divider, Typography } from "@mui/material"
 import { format } from "date-fns";
 import Image from 'next/image';
 import { ContentProps } from "./content.props";
 import { calculatesEstimatedTimeToRead } from "@/helpers/time.format";
+import { useRouter } from "next/router";
 
-const Content = ({blogs }: ContentProps) => (
+const Content = ({blogs }: ContentProps) => {
+  const router = useRouter();
+
+  return(
   <Box width={{xs:'100%', md:'70%'}}>
     {blogs.map(item =>(
-      <Box key={item.id} sx={{backgroundColor:'rgba(0,0,0,.4)', padding:'20px', marginTop:'20px', borderRadius:'8px', boxShadow:'0px 8px 16px rgba(255,255,255,.2)'}}>
-        <Box  position={'relative'} width={'100%'} sx={{height:{xs:'30vh', md:'50vh'}}}>
-          <Image  src={item.image.url} alt={item.author.name} fill style={{objectFit: 'cover', borderRadius:'10px'}}/>
+      <Box sx={{backgroundColor:'rgba(0,0,0,.4)', 
+            padding:'20px', 
+            marginTop:'20px', 
+            borderRadius:'8px', 
+            boxShadow:'0px 8px 16px rgba(255,255,255,.2)', 
+            cursor:'pointer',
+            }}
+            onClick={()=>router.push(`/blog/${item.slug}`)}>
+        <Box position={'relative'} width={'100%'} sx={{height:{xs:'30vh', md:'50vh'}}}>
+          <Image src={item.image.url} alt={item.author.name} fill style={{objectFit: 'cover', borderRadius:'10px'}}/>
         </Box>
         <Typography variant="h4" marginTop={'30px'}>{item.excerpt}</Typography>
         <Typography variant="body2" color={'gray'}>{item.excerpt}</Typography>
@@ -21,11 +31,10 @@ const Content = ({blogs }: ContentProps) => (
               <Typography variant="body2">{item.author.name}</Typography>
               <Typography sx={{opacity:'.4'}}>{format(item.createdAt, 'dd MMM,  yyyy')} &#x2022; {calculatesEstimatedTimeToRead(item.description.text)} min read</Typography>
                 </Box>
-            </Box>
+        </Box>
       </Box>
-    
     ))}
   </Box>
-)
+  )}
 
-export default Content
+export default Content;
