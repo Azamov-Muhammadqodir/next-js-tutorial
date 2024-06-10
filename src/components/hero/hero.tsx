@@ -21,7 +21,9 @@ const router = useRouter();
         >
         {blogs.map(item =>
             (
-                <Box sx={{cursor:'pointer'}}   key={item.id} onClick={()=>router.push(`/blog/${item.slug}`)}>
+                <Box sx={{cursor:'pointer'}}   key={item.id} onClick={()=>{
+                    router.push(`/blog/${item.slug}`);
+                    }}>
                     <Box  sx={{position:'relative', width:'100%', height:'70vh'}}>
                         <Image src={item.image.url} alt={item.tittle} fill  style={{objectFit:"cover"}}/>
                         <Box sx={{position:'absolute', top:0, left:0, bottom:0, right:0, width:'100%', height:'100%', backgroundColor:'rgba(0, 0, 0, .6)'}}/>
