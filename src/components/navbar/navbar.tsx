@@ -16,7 +16,8 @@ import ListItemText from '@mui/material/ListItemText';
 import CloseIcon from '@mui/icons-material/Close';
 import AccountCircleTwoToneIcon from '@mui/icons-material/AccountCircleTwoTone';
 import MenuBookTwoToneIcon from '@mui/icons-material/MenuBookTwoTone';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+import Image from 'next/image';
 
 interface Props{
     window?: ()=>Window;
@@ -60,8 +61,8 @@ const Navbar = ({window}:Props) =>{
     </Box>
   );
   
-    return <Box height={"10vh"} sx={{ display: 'flex' }}>
-        <AppBar sx={{height:"10vh", backgroundColor:"#141414"}} component="nav" >
+    return <Box  sx={{ display: 'flex' }}>
+        <AppBar sx={{backgroundColor:"#141414"}} component="nav" >
             <Toolbar>
             <IconButton
                 color="inherit"
@@ -78,7 +79,7 @@ const Navbar = ({window}:Props) =>{
                 component="div"
               >
               </Typography>
-                <AccountCircleTwoToneIcon sx={{width:'50px', height:'50px'}}/>  
+                <Image src={"/vercel.svg"} alt="logo" width={50} height={50}/>
                 <span style={{marginLeft:'25px'}}>
                   decimetr
                 </span>
